@@ -2,7 +2,7 @@
 #define FP_CONTROLLER_H
 #include "Console.h"
 #include "WavModel.h"
-
+#include "SignalProcessor.h"
 class Controller {
     Console UI;
 public:

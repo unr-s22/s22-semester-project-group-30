@@ -4,7 +4,11 @@
 
 class Reverser : public SignalProcessor {
 public:
-    
+    Reverser();
+
+    std::vector<float> processReverser(const std::vector<float>& input);
+
+    virtual ~Reverser();
 };
 
 #endif

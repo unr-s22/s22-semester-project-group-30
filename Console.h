@@ -15,6 +15,8 @@ public:
     void displayAttributes(int, int, int, int);
     void displayProcesses();
     int getSelection();
+
+    
 };
 
 #endif
