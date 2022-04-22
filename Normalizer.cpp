@@ -8,11 +8,13 @@ std::vector<float> Nomralizer::processNormalizer(const std::vector<float>& input
             max = abs(input[i]);
         }
     }
-    if(BitsPerSample == 8){
+    /*WAV_HEADER variables;
+    Get BitsPerSample variable in a different way */
+    if(variables.BitsPerSample == 8){
         for(int i = 0; i < input.size(); i++){
             output.push_back(input[i]*(MAX8BIT/max);
         }
-    } else if(BitsPerSample == 16){
+    } else if(variables.BitsPerSample == 16){
         for(int i = 0; i < input.size(); i++){
             if(input[i] > 0){
                 output.push_back(input[i]*(MAX16BIT/max);
