@@ -64,23 +64,29 @@ void Console::setAudio(const std::vector<float>& input, int subChunk1Size, int a
         exit(1);
     } else {
         /* Header */
+        outFile << "RIFF";
+        /*
         outFile << 52; // "R" chunkID
         outFile << 49; // "I" chunkID
         outFile << 46; // "F" chunkID
         outFile << 46; // "F" chunkID
-        
+        */
         outFile << chunkSize; //chunkSize
-        
+        outFile << "WAVE"; //format
+        /*
         outFile << 57; // "W" format
         outFile << 41; // "A" format
         outFile << 56; // "V" format
         outFile << 45; // "E" format
-
+        */
         /* Format Subchunk */
+        outFile << "fmt "; //subchunk1ID
+        /*
         outFile << 66; // "f" subchunk1ID
         outFile << 109; // "m" subchunk1ID
         outFile << 74; // "t" subchunk1ID
         outFile << 20; // " " subchunk1ID
+        */
 
         outFile << subChunk1Size; //subchunk1Size
         outFile << audioFormat; //audioFormat
@@ -91,11 +97,14 @@ void Console::setAudio(const std::vector<float>& input, int subChunk1Size, int a
         outFile << bitsPerSample; //bitsPerSample
         
         /* Data Subchunk */
+        outFile << "data"; //subchunk2ID
+        /*
         outFile << 64; // "d" subchunk2ID
         outFile << 61; // "a" subchunk2ID
         outFile << 74; // "t" subchunk2ID
         outFile << 61; // "a" subchunk2ID
-        
+        */
+
         outFile << subChunk2Size; //subchunk2Size
         for(auto i: audioOut){
             outFile << i;
