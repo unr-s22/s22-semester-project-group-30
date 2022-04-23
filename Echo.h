@@ -6,11 +6,11 @@
 #include <vector>
 class Echo : public SignalProcessor {
 public:
-    Echo();
+    //Echo();
     
     std::vector<float> processEcho(const std::vector<float>& input, float gain, int delay, uint16_t numChan);
 
-    virtual ~Echo();
+    //virtual ~Echo();
 };
 
 #endif

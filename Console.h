@@ -13,7 +13,6 @@ public:
     std::string getIFile();
     std::string getOFile();
     void displayAttributes(int, int, int, int);
-    void displayProcesses();
     int getProcess();
     float getGain();
     int getDelay();

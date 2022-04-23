@@ -2,13 +2,13 @@
 #define FP_SIGPROC_H
 class SignalProcessor {
 public:
-    SignalProcessor();
-
+    //SignalProcessor();
+/*
     virtual std::vector<float> processEcho();
     virtual std::vector<float> processNormalizer();
     virtual std::vector<float> processReverser();
-
-    virtual ~SignalProcessor();
+*/
+    //virtual ~SignalProcessor();
 };
 
 #endif

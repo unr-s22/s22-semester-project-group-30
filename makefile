@@ -21,13 +21,13 @@ WavReader.o: WavReader.cpp WavReader.h Wav.h
 Wav.o: Wav.cpp Wav.h
 	g++ -std=c++11 -c Wav.cpp
 
-Echo.o: Echo.cpp Echo.h SignalProcessor.h
+Echo.o: Echo.cpp Echo.h
 	g++ -std=c++11 -c Echo.cpp
 
-Normalizer.o: Normalizer.cpp Normalizer.h SignalProcessor.h
+Normalizer.o: Normalizer.cpp Normalizer.h
 	g++ -std=c++11 -c Normalizer.cpp
 
-Reverser.o: Reverser.cpp Reverser.h SignalProcessor.h
+Reverser.o: Reverser.cpp Reverser.h
 	g++ -std=c++11 -c Reverser.cpp
 
 SignalProcessor.o: SignalProcessor.cpp 

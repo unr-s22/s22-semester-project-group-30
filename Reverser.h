@@ -5,11 +5,11 @@
 #include <vector>
 class Reverser : public SignalProcessor {
 public:
-    Reverser();
+    //Reverser();
 
     std::vector<float> processReverser(const std::vector<float>& input, uint16_t numChan);
 
-    virtual ~Reverser();
+    //virtual ~Reverser();
 };
 
 #endif
