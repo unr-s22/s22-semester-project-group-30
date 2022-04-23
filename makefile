@@ -1,5 +1,5 @@
-test1: main.o Console.o Controller.o WavModel.o Wav.o WavReader.o IWavModel.o Echo.o Normalizer.o Reverser.o SignalProcessor.o
-	g++ -std=c++11 -o test1 main.o Console.o Controller.o WavModel.o Wav.o WavReader.o IWavModel.o Echo.o Normalizer.o Reverser.o SignalProcessor.o
+run: main.o Console.o Controller.o WavModel.o Wav.o WavReader.o IWavModel.o Echo.o Normalizer.o Reverser.o SignalProcessor.o
+	g++ -std=c++11 -o run main.o Console.o Controller.o WavModel.o Wav.o WavReader.o IWavModel.o Echo.o Normalizer.o Reverser.o SignalProcessor.o
 
 main.o: main.cpp Console.h Controller.h
 	g++ -std=c++11 -c main.cpp
@@ -34,4 +34,4 @@ SignalProcessor.o: SignalProcessor.cpp
 	g++ -std=c++11 -c SignalProcessor.cpp
 
 clean:
-	rm *.o test1
+	rm *.o run
