@@ -30,7 +30,7 @@ Normalizer.o: Normalizer.cpp Normalizer.h SignalProcessor.h
 Reverser.o: Reverser.cpp Reverser.h SignalProcessor.h
 	g++ -std=c++11 -c Reverser.cpp
 
-SignalProcessor.o: SignalProcessor.cpp SignalProcessor.h
+SignalProcessor.o: SignalProcessor.cpp 
 	g++ -std=c++11 -c SignalProcessor.cpp
 
 clean:

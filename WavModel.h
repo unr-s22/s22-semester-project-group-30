@@ -12,7 +12,7 @@ class WavModel : public IWavModel {
     std::vector<float> audio;
 public:
     void openRead(const std::string);
-    std::vector<float> getAudio() {return audio;}
+    std::vector<float> getAudio() const {return audio;}
     wav_hdr getAttribute() {return header;}
 };
 
