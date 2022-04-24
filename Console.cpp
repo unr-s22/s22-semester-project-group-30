@@ -48,10 +48,10 @@ int Console::getDelay(){
     return delay;
 }
 
-void Console::setAudio(const std::vector<float>& input, int subChunk1Size, int audioFormat, int numChannels, uint32_t sampleRate, int bitsPerSample, uint8_t subChunk2Size){
+void Console::setAudio(const std::vector<float>& input, uint32_t subChunk1Size, uint16_t audioFormat, uint16_t numChannels, uint32_t sampleRate, uint16_t bitsPerSample, uint32_t subChunk2Size){
     std::vector<float> audioOut;
     audioOut = input;
-    int chunkSize = (4 + (8 + subChunk1Size) + (8 + (subChunk2Size)));
+    uint32_t chunkSize = (4 + (8 + subChunk1Size) + (8 + (subChunk2Size)));
     uint32_t byteRate = (sampleRate * numChannels * (bitsPerSample/8));
     uint16_t blockAlign = (numChannels * (bitsPerSample/8));
 
@@ -64,15 +64,21 @@ void Console::setAudio(const std::vector<float>& input, int subChunk1Size, int a
         exit(1);
     } else {
         /* Header */
-        outFile << "RIFF";
+        uint8_t chunkID[4] = {'R','I','F','F'};
+        
+        outFile << chunkID;
+        std::cout << outFile.tellp() << std::endl;
         /*
         outFile << 52; // "R" chunkID
         outFile << 49; // "I" chunkID
         outFile << 46; // "F" chunkID
         outFile << 46; // "F" chunkID
         */
-        outFile << chunkSize; //chunkSize
+        //outFile << chunkSize; //chunkSize
+        outFile.write(reinterpret_cast<char*>(&chunkSize), sizeof(uint32_t));
+        std::cout << outFile.tellp() << std::endl;
         outFile << "WAVE"; //format
+        std::cout << outFile.tellp() << std::endl;
         /*
         outFile << 57; // "W" format
         outFile << 41; // "A" format
@@ -91,6 +97,7 @@ void Console::setAudio(const std::vector<float>& input, int subChunk1Size, int a
         outFile << subChunk1Size; //subchunk1Size
         outFile << audioFormat; //audioFormat
         outFile << numChannels; //numChannels
+        std::cout << outFile.tellp() << std::endl;
         outFile << sampleRate; //sampleRate
         outFile << byteRate; //byteRate
         outFile << blockAlign; //blockAlign
@@ -111,6 +118,8 @@ void Console::setAudio(const std::vector<float>& input, int subChunk1Size, int a
         }
 
         outFile.close();
+
+
     }
     /*Write Out to Wav File*/
 }

@@ -16,7 +16,7 @@ public:
     int getProcess();
     float getGain();
     int getDelay();
-    void setAudio(const std::vector<float>& input, int subChunk1Size, int audioFormat, int numChannels, uint32_t sampleRate, int bitsPerSample, uint8_t subChunk2Size);
+    void setAudio(const std::vector<float>& input, uint32_t subChunk1Size, uint16_t audioFormat, uint16_t numChannels, uint32_t sampleRate, uint16_t bitsPerSample, uint32_t subChunk2Size);
 
 };
 
