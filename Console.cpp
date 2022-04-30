@@ -65,20 +65,19 @@ void Console::setAudio(const std::vector<float>& input, uint32_t subChunk1Size, 
     } else {
         /* Header */
         uint8_t chunkID[4] = {'R','I','F','F'};
+        uint8_t format[4] = {'W','A','V','E'};
+        uint8_t subchunk1ID[4] = {'f','m','t',' '};
+        uint8_t subchunk2ID[4] = {'d','a','t','a'};
         
-        outFile << chunkID;
-        std::cout << outFile.tellp() << std::endl;
+        outFile.write(reinterpret_cast<char*>(&chunkID), sizeof(uint32_t));
         /*
         outFile << 52; // "R" chunkID
         outFile << 49; // "I" chunkID
         outFile << 46; // "F" chunkID
         outFile << 46; // "F" chunkID
         */
-        //outFile << chunkSize; //chunkSize
         outFile.write(reinterpret_cast<char*>(&chunkSize), sizeof(uint32_t));
-        std::cout << outFile.tellp() << std::endl;
-        outFile << "WAVE"; //format
-        std::cout << outFile.tellp() << std::endl;
+        outFile.write(reinterpret_cast<char*>(&format), sizeof(uint32_t));
         /*
         outFile << 57; // "W" format
         outFile << 41; // "A" format
@@ -86,7 +85,7 @@ void Console::setAudio(const std::vector<float>& input, uint32_t subChunk1Size, 
         outFile << 45; // "E" format
         */
         /* Format Subchunk */
-        outFile << "fmt "; //subchunk1ID
+        outFile.write(reinterpret_cast<char*>(&subchunk1ID), sizeof(uint32_t));
         /*
         outFile << 66; // "f" subchunk1ID
         outFile << 109; // "m" subchunk1ID
@@ -94,17 +93,16 @@ void Console::setAudio(const std::vector<float>& input, uint32_t subChunk1Size, 
         outFile << 20; // " " subchunk1ID
         */
 
-        outFile << subChunk1Size; //subchunk1Size
-        outFile << audioFormat; //audioFormat
-        outFile << numChannels; //numChannels
-        std::cout << outFile.tellp() << std::endl;
-        outFile << sampleRate; //sampleRate
-        outFile << byteRate; //byteRate
-        outFile << blockAlign; //blockAlign
-        outFile << bitsPerSample; //bitsPerSample
+        outFile.write(reinterpret_cast<char*>(&subChunk1Size), sizeof(uint32_t));
+        outFile.write(reinterpret_cast<char*>(&audioFormat), sizeof(uint16_t));
+        outFile.write(reinterpret_cast<char*>(&numChannels), sizeof(uint16_t));
+        outFile.write(reinterpret_cast<char*>(&sampleRate), sizeof(uint32_t));
+        outFile.write(reinterpret_cast<char*>(&byteRate), sizeof(uint32_t));
+        outFile.write(reinterpret_cast<char*>(&blockAlign), sizeof(uint16_t));
+        outFile.write(reinterpret_cast<char*>(&bitsPerSample), sizeof(uint16_t));
         
         /* Data Subchunk */
-        outFile << "data"; //subchunk2ID
+        outFile.write(reinterpret_cast<char*>(&subchunk2ID), sizeof(uint32_t));
         /*
         outFile << 64; // "d" subchunk2ID
         outFile << 61; // "a" subchunk2ID
@@ -112,9 +110,17 @@ void Console::setAudio(const std::vector<float>& input, uint32_t subChunk1Size, 
         outFile << 61; // "a" subchunk2ID
         */
 
-        outFile << subChunk2Size; //subchunk2Size
-        for(auto i: audioOut){
-            outFile << i;
+        outFile.write(reinterpret_cast<char*>(&subChunk2Size), sizeof(uint32_t));
+        
+        if(bitsPerSample == 8) {
+            uint8_t buffer[subChunk2Size];
+        }
+        else if(bitsPerSample == 16) {
+            int16_t buffer[input.size()];
+            for(int i = 0; i < input.size(); i++) {
+                buffer[i] = input.at(i)*INT16_MAX;
+            }
+            outFile.write(reinterpret_cast<char*>(&buffer), sizeof(buffer));
         }
 
         outFile.close();
