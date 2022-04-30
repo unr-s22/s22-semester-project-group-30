@@ -1,14 +1,12 @@
 #ifndef FP_SIGPROC_H
 #define FP_SIGPROC_H
+#include <vector>
+#include <cstdint>
 class SignalProcessor {
 public:
-    //SignalProcessor();
-/*
-    virtual std::vector<float> processEcho();
-    virtual std::vector<float> processNormalizer();
-    virtual std::vector<float> processReverser();
-*/
-    //virtual ~SignalProcessor();
+
+    const std::vector<float>& process(const std::vector<float>& input, uint16_t numChan, uint16_t bps);
+
 };
 
 #endif
