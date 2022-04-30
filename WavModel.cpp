@@ -13,7 +13,7 @@ void WavModel::openRead(const std::string filename) {
             size = header.Subchunk2Size/2;
     }
     float audio[size];
-    reader.convertToFloat(audio, size, wav, header);
+    reader.readSamples(audio,size,wav, header);
     for(auto i: audio) {
         this->audio.push_back(i);
     }
