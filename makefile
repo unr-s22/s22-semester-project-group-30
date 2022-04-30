@@ -1,10 +1,10 @@
-run: main.o Console.o Controller.o WavModel.o Wav.o WavReader.o IWavModel.o Echo.o Normalizer.o Reverser.o SignalProcessor.o
-	g++ -std=c++11 -o run main.o Console.o Controller.o WavModel.o Wav.o WavReader.o IWavModel.o Echo.o Normalizer.o Reverser.o SignalProcessor.o
+run: main.o Console.o Controller.o WavModel.o Wav.o WavReader.o IWavModel.o Echo.o Normalizer.o SignalProcessor.o
+	g++ -std=c++11 -o run main.o Console.o Controller.o WavModel.o Wav.o WavReader.o IWavModel.o Echo.o Normalizer.o SignalProcessor.o
 
 main.o: main.cpp Console.h Controller.h
 	g++ -std=c++11 -c main.cpp
 
-Controller.o: Controller.cpp Controller.h Console.h WavModel.h Echo.h Normalizer.h Reverser.h
+Controller.o: Controller.cpp Controller.h Console.h WavModel.h Echo.h Normalizer.h
 	g++ -std=c++11 -c Controller.cpp
 
 Console.o: Console.cpp Console.h
@@ -26,9 +26,6 @@ Echo.o: Echo.cpp Echo.h
 
 Normalizer.o: Normalizer.cpp Normalizer.h
 	g++ -std=c++11 -c Normalizer.cpp
-
-Reverser.o: Reverser.cpp Reverser.h
-	g++ -std=c++11 -c Reverser.cpp
 
 SignalProcessor.o: SignalProcessor.cpp 
 	g++ -std=c++11 -c SignalProcessor.cpp
