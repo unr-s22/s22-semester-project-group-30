@@ -4,7 +4,6 @@
 #include "WavModel.h"
 #include "Echo.h"
 #include "Normalizer.h"
-#include "Reverser.h"
 class Controller {
     Console UI;
 public:

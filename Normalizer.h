@@ -9,11 +9,9 @@
 #define MIN16BIT -32768
 class Normalizer : public SignalProcessor {
 public:
-    //Normalizer();
 
-    std::vector<float> processNormalizer(const std::vector<float>& input, uint16_t bps);
+    std::vector<float> process(const std::vector<float>& input, uint16_t numChan, uint16_t bps);
 
-    //virtual ~Normalizer();
 };
 
 #endif

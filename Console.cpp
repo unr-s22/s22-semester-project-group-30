@@ -29,7 +29,6 @@ int Console::getProcess(){
     std::cout << "Select a process: " << std::endl;
     std::cout << "1. Echo" << std::endl;
     std::cout << "2. Normalize" << std::endl;
-    std::cout << "3. Reverse" << std::endl;
     std::cin >> selection;
     return selection;
 }
@@ -70,28 +69,11 @@ void Console::setAudio(const std::vector<float>& input, uint32_t subChunk1Size, 
         uint8_t subchunk2ID[4] = {'d','a','t','a'};
         
         outFile.write(reinterpret_cast<char*>(&chunkID), sizeof(uint32_t));
-        /*
-        outFile << 52; // "R" chunkID
-        outFile << 49; // "I" chunkID
-        outFile << 46; // "F" chunkID
-        outFile << 46; // "F" chunkID
-        */
         outFile.write(reinterpret_cast<char*>(&chunkSize), sizeof(uint32_t));
         outFile.write(reinterpret_cast<char*>(&format), sizeof(uint32_t));
-        /*
-        outFile << 57; // "W" format
-        outFile << 41; // "A" format
-        outFile << 56; // "V" format
-        outFile << 45; // "E" format
-        */
+
         /* Format Subchunk */
         outFile.write(reinterpret_cast<char*>(&subchunk1ID), sizeof(uint32_t));
-        /*
-        outFile << 66; // "f" subchunk1ID
-        outFile << 109; // "m" subchunk1ID
-        outFile << 74; // "t" subchunk1ID
-        outFile << 20; // " " subchunk1ID
-        */
 
         outFile.write(reinterpret_cast<char*>(&subChunk1Size), sizeof(uint32_t));
         outFile.write(reinterpret_cast<char*>(&audioFormat), sizeof(uint16_t));
@@ -103,12 +85,6 @@ void Console::setAudio(const std::vector<float>& input, uint32_t subChunk1Size, 
         
         /* Data Subchunk */
         outFile.write(reinterpret_cast<char*>(&subchunk2ID), sizeof(uint32_t));
-        /*
-        outFile << 64; // "d" subchunk2ID
-        outFile << 61; // "a" subchunk2ID
-        outFile << 74; // "t" subchunk2ID
-        outFile << 61; // "a" subchunk2ID
-        */
 
         outFile.write(reinterpret_cast<char*>(&subChunk2Size), sizeof(uint32_t));
         

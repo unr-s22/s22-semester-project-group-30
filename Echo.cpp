@@ -1,7 +1,9 @@
 #include "Echo.h"
 
-std::vector<float> Echo::processEcho(const std::vector<float>& input, float gain, int delay, uint16_t numChan){
+std::vector<float> Echo::process(const std::vector<float>& input, uint16_t numChan, uint16_t bps){
     std::vector<float> output;
+    float gain = 0.5;
+    int delay = 100;
     auto decay = log(0.001)/log(gain);
     int newsize = int(input.size() + delay*decay);
     std::vector<float> longerInput(newsize, 0.0f);
