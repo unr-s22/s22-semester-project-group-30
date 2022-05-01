@@ -1,5 +1,4 @@
 #include "Controller.h"
-using namespace std;
 
 void Controller::setUI(Console console) {
     UI = console;
@@ -35,6 +34,6 @@ void Controller::run() {
         model.openWrite(UI.getOFile(), outputAudioNormalizer);
     }
 	else {
-		cout << "Error: Invalid choice." << endl;
+		std::cout << "Error: Invalid choice." << endl;
 	}
 }
