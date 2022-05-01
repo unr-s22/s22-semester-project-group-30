@@ -10,11 +10,6 @@ void Controller::run() {
     Normalizer normalizer;
 
     model.openRead(UI.getIFile());
-    /*
-    for(auto i: model.getAudio()) {
-        cout << i << ',';
-    }
-    */
 
     UI.displayAttributes(
         model.getAttribute().SampleRate,
