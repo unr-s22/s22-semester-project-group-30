@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <fstream>
 #include "Wav.h"
+#include <iostream>
 
 class WavReader {
 public:
@@ -23,7 +24,6 @@ public:
             }
         }
     }
-    //void convertToFloat(float* samples, size_t numBytes, std::ifstream& file, wav_hdr header);
     void readHeader(std::ifstream& file, wav_hdr& header);
 };
 
