@@ -12,10 +12,10 @@ void WavModel::openRead(const std::string filename) {
         case 16:
             size = header.Subchunk2Size/2;
     }
-    float audio[size];
+    float* audio = new float[size];
     reader.readSamples(audio,size,wav, header);
-    for(auto i: audio) {
-        this->audio.push_back(i);
+    for(int i = 0; i < size; i ++) {
+        this->audio.push_back(audio[i]);
     }
     wav.close();
 }
