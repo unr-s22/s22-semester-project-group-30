@@ -29,7 +29,7 @@ void Controller::run() {
 
     if(processChoice == 1){ 
         vector<float> const &outputAudioEcho = echo.process(inputAudio, model.getAttribute().NumChannels, model.getAttribute().BitsPerSample);
-        UI.setAudio(outputAudioEcho, model.getAttribute().Subchunk1Size, model.getAttribute().AudioFormat, model.getAttribute().NumChannels, model.getAttribute().SampleRate, model.getAttribute().BitsPerSample, model.getAttribute().Subchunk2Size);
+        model.openWrite(UI.getOFile(),outputAudioEcho);
     } else if(processChoice == 2){
         std::vector<float> const &outputAudioNormalizer = normalizer.process(inputAudio, model.getAttribute().NumChannels, model.getAttribute().BitsPerSample);
         model.openWrite(UI.getOFile(),outputAudioNormalizer);
