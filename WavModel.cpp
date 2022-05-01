@@ -33,3 +33,11 @@ void WavModel::openWrite(const std::string filename, std::vector<float> input) {
         exit(1);
     }
 }
+
+std::vector<float> WavModel::getAudio() const {
+    return audio;
+}
+
+wav_hdr WavModel::getAttribute() const {
+    return header;
+}

@@ -1,6 +1,6 @@
 #include "Echo.h"
 
-std::vector<float> Echo::process(const std::vector<float>& input, uint16_t numChan, uint16_t bps){
+std::vector<float> Echo::process(const std::vector<float> input, wav_hdr attributes){
     std::vector<float> output;
     float gain = 0.5;
     int delay = 2000;
@@ -10,7 +10,7 @@ std::vector<float> Echo::process(const std::vector<float>& input, uint16_t numCh
     longerInput.insert(longerInput.begin() + int(delay*decay), input.begin(), input.end());
     output.reserve(longerInput.size());
 
-    if(numChan == 1){ //Mono
+    if(attributes.NumChannels == 1){ //Mono
         for(int i = 0; i < newsize; i++){
             if(i < delay*decay){
                 output.push_back(input[i]);
@@ -20,7 +20,7 @@ std::vector<float> Echo::process(const std::vector<float>& input, uint16_t numCh
                 longerInput[i] += output[i]*decay;
             }
         }
-    } else if(numChan == 2){ //Stereo
+    } else if(attributes.NumChannels == 2){ //Stereo
         for(int i = 0; i < newsize; i+=2){
             if(i < delay*decay){
                 output.push_back(input[i]);
