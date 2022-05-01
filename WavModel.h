@@ -12,10 +12,10 @@ class WavModel : public IWavModel {
     wav_hdr header;
     std::vector<float> audio;
 public:
-    void openRead(const std::string);
-    void openWrite(const std::string, std::vector<float>);
-    std::vector<float> getAudio() const {return audio;}
-    wav_hdr getAttribute() {return header;}
+    void openRead(const std::string) override;
+    void openWrite(const std::string, std::vector<float>) override;
+    std::vector<float> getAudio() const override;
+    wav_hdr getAttribute() const override;
 };
 
 #endif

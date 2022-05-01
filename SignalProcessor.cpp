@@ -5,7 +5,7 @@
 class SignalProcessor {
 public:
 
-    const std::vector<float>& process(const std::vector<float>& input, uint16_t numChan, uint16_t bps);
+    virtual std::vector<float> process(const std::vector<float>, wav_hdr) = 0;
 
 };
 
