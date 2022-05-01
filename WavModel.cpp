@@ -19,3 +19,16 @@ void WavModel::openRead(const std::string filename) {
     }
     wav.close();
 }
+
+void WavModel::openWrite(const std::string filename, std::vector<float> input) {
+    WavWriter writer;
+    std::ofstream wav(filename, std::ios::binary);
+    if(wav.is_open()){
+        writer.writeWav(wav, input, header);
+        wav.close();
+    }
+    else {
+        std::cout << "Error opening file" << std::endl;
+        exit(1);
+    }
+}
