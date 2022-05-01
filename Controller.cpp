@@ -1,4 +1,5 @@
 #include "Controller.h"
+using namespace std;
 
 void Controller::setUI(Console console) {
     UI = console;
@@ -11,7 +12,7 @@ void Controller::run() {
 
     model.openRead(UI.getIFile());
     for(auto i: model.getAudio()) {
-        std::cout << i << ',';
+        cout << i << ',';
     }
 
     UI.displayAttributes(
@@ -22,14 +23,16 @@ void Controller::run() {
     );
     
     int processChoice = UI.getProcess();
-    std::vector<float> const &inputAudio = model.getAudio();
+    vector<float> const &inputAudio = model.getAudio();
 
     if(processChoice == 1){ 
-        std::vector<float> const &outputAudioEcho = echo.process(inputAudio, model.getAttribute().NumChannels, model.getAttribute().BitsPerSample);
+        vector<float> const &outputAudioEcho = echo.process(inputAudio, model.getAttribute().NumChannels, model.getAttribute().BitsPerSample);
         UI.setAudio(outputAudioEcho, model.getAttribute().Subchunk1Size, model.getAttribute().AudioFormat, model.getAttribute().NumChannels, model.getAttribute().SampleRate, model.getAttribute().BitsPerSample, model.getAttribute().Subchunk2Size);
     } else if(processChoice == 2){
         std::vector<float> const &outputAudioNormalizer = normalizer.process(inputAudio, model.getAttribute().NumChannels, model.getAttribute().BitsPerSample);
         model.openWrite(UI.getOFile(),outputAudioNormalizer);
     }
-
+	else {
+		cout << "Error: Invalid choice." << endl;
+	}
 }
