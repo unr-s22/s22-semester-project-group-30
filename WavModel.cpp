@@ -18,6 +18,7 @@ void WavModel::openRead(const std::string filename) {
         this->audio.push_back(audio[i]);
     }
     wav.close();
+    delete [] audio;
 }
 
 void WavModel::openWrite(const std::string filename, std::vector<float> input) {

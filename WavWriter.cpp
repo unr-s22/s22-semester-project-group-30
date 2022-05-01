@@ -32,6 +32,7 @@ void WavWriter::writeWav(std::ofstream& file, std::vector<float> input, wav_hdr 
     if(header.BitsPerSample == 8) {
         uint32_t subchunk2size = input.size();
         uint8_t buffer[input.size()];
+        std::cout << input.size() << std::endl;
         file.write(reinterpret_cast<char*>(&subchunk2size), sizeof(uint32_t));
         for(int i = 0; i < input.size(); i++) {
             buffer[i] = input.at(i)*UINT8_MAX;
