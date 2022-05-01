@@ -2,6 +2,8 @@
 #define FP_SIGPROC_H
 #include <vector>
 #include <cstdint>
+#include "Wav.h"
+
 class SignalProcessor {
 public:
 

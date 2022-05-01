@@ -20,22 +20,9 @@ std::vector<float> Echo::process(const std::vector<float> input, wav_hdr attribu
                 longerInput[i] += output[i]*decay;
             }
         }
-<<<<<<< HEAD
     } else if(attributes.NumChannels == 2){ //Stereo
-        for(int i = 0; i < newsize; i++){
-            if(i < delay){
-                output.push_back(0.0f);
-                output.push_back(0.0f);
-            }
-            else if(output[i-delay] > 0.0f){
-                output.push_back(input[i] + gain * input[i - delay]);
-                output.push_back(input[i + 1] + gain * input[i - delay + 1]);
-            } else {
-=======
-    } else if(numChan == 2){ //Stereo
         for(int i = 0; i < newsize; i+=2){
             if(i < delay*decay){
->>>>>>> 6481cacb33b6f59c12744a1e7944ca4fbfbdb75c
                 output.push_back(input[i]);
                 output.push_back(input[i+1]);
             }
