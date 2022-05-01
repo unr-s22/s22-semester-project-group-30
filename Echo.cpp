@@ -3,7 +3,7 @@
 std::vector<float> Echo::process(const std::vector<float> input, wav_hdr attributes){
     std::vector<float> output;
     float gain = 0.5;
-    int delay = 2000;
+    int delay = 5000;
     auto decay = log(0.001)/log(gain);
     int newsize = int(input.size() + delay*decay);
     std::vector<float> longerInput(newsize, 0.0f);
