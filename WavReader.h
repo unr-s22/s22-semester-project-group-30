@@ -20,7 +20,6 @@ public:
         }
         if(header.BitsPerSample == 16) {
             int16_t* data = new int16_t[numBytes];
-            std::cout << '2' << std::endl;
             file.read(reinterpret_cast<char*>(data), 2*numBytes);
             for(int i = 0; i < numBytes; i++) {
                 samples[i] = float(data[i])/INT16_MAX;

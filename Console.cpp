@@ -32,7 +32,3 @@ int Console::getProcess(){
     std::cin >> selection;
     return selection;
 }
-
-void Console::setAudio(const std::vector<float>& input, uint32_t subChunk1Size, uint16_t audioFormat, uint16_t numChannels, uint32_t sampleRate, uint16_t bitsPerSample, uint32_t subChunk2Size){
-    /*Write Out to Wav File*/
-}
