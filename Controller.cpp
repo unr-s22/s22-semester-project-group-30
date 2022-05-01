@@ -34,6 +34,6 @@ void Controller::run() {
         model.openWrite(UI.getOFile(), outputAudioNormalizer);
     }
 	else {
-		std::cout << "Error: Invalid choice." << endl;
+		std::cout << "Error: Invalid choice." << std::endl;
 	}
 }
