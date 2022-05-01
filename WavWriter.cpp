@@ -47,4 +47,7 @@ void WavWriter::writeWav(std::ofstream& file, std::vector<float> input, wav_hdr 
         }
         file.write(reinterpret_cast<char*>(&buffer), sizeof(buffer));
     }
+	else{
+		std::cout << "Error!" << endl;
+	}
 }

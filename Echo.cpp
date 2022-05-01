@@ -34,5 +34,8 @@ std::vector<float> Echo::process(const std::vector<float> input, wav_hdr attribu
             }
         }
     }
+	else {
+		std::cout << "Error!" << endl;
+	}
     return output;
 }
