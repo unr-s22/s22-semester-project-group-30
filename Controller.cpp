@@ -25,13 +25,13 @@ void Controller::run() {
     );
     
     int processChoice = UI.getProcess();
-    vector<float> inputAudio = model.getAudio();
+    std::vector<float> inputAudio = model.getAudio();
 
-    if(processChoice == 1){ 
-        vector<float> outputAudioEcho = echo.process(inputAudio, model.getAttribute());
+    if(processChoice == 1) { 
+        std::vector<float> outputAudioEcho = echo.process(inputAudio, model.getAttribute());
         model.openWrite(UI.getOFile(), outputAudioEcho);
     } else if(processChoice == 2){
-        std::vector<float> const &outputAudioNormalizer = normalizer.process(inputAudio, model.getAttribute());
+        std::vector<float> outputAudioNormalizer = normalizer.process(inputAudio, model.getAttribute());
         model.openWrite(UI.getOFile(), outputAudioNormalizer);
     }
 	else {
