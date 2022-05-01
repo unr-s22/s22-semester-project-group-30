@@ -14,7 +14,7 @@ public:
             uint8_t* data = new uint8_t[numBytes];
             file.read(reinterpret_cast<char*>(data), numBytes);
             for(int i = 0; i < numBytes; i++) {
-                samples[i] = float(data[i])/UINT8_MAX;
+                samples[i] = (2*float(data[i])/UINT8_MAX)-1;
             }
             delete [] data;
         }

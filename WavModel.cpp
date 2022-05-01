@@ -14,7 +14,7 @@ void WavModel::openRead(const std::string filename) {
     }
     float* audio = new float[size];
     reader.readSamples(audio,size,wav, header);
-    for(int i = 0; i < size; i ++) {
+    for(int i = 0; i < size; i++) {
         this->audio.push_back(audio[i]);
     }
     wav.close();

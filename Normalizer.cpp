@@ -1,5 +1,6 @@
 #include "Normalizer.h"
 #include <iostream>
+
 std::vector<float> Normalizer::process(const std::vector<float>& input, uint16_t numChan, uint16_t bps){
     std::vector<float> output;
     float max = 0.0f;
