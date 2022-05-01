@@ -6,7 +6,7 @@
 #include <vector>
 #define MAX8BIT 255
 #define MAX16BIT 32767
-#define MIN16BIT -32768
+#define MIN16BIT 32768
 class Normalizer : public SignalProcessor {
 public:
 

@@ -16,7 +16,13 @@ std::vector<float> Normalizer::process(const std::vector<float>& input, uint16_t
         }
     } else if(bps == 16){
         for(int i = 0; i < input.size(); i++){
-            output.push_back(input[i]/max);
+            if(input[i] > 0.0f){
+                output.push_back(input[i]*(MAX16BIT/max));
+            } else if(input[i] < 0.0f) {
+                output.push_back(input[i]*(MIN16BIT/max));
+            } else {
+                output.push_back(0.0f);
+            }
         }
     }
     

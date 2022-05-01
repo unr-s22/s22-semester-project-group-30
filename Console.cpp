@@ -1,7 +1,7 @@
 #include "Console.h"
 
 std::string Console::getIFile() {
-    std::string filename;
+    std::string filename = "";
     std::cout << "Enter input file: ";
     std::cin >> filename;
     iFilename = filename;
@@ -31,20 +31,6 @@ int Console::getProcess(){
     std::cout << "2. Normalize" << std::endl;
     std::cin >> selection;
     return selection;
-}
-
-float Console::getGain(){
-    float gain;
-    std::cout << "Enter gain(0.001 to 0.999): ";
-    std::cin >> gain;
-    return gain;
-}
-
-int Console::getDelay(){
-    int delay;
-    std::cout << "Enter delay: ";
-    std::cin >> delay;
-    return delay;
 }
 
 void Console::setAudio(const std::vector<float>& input, uint32_t subChunk1Size, uint16_t audioFormat, uint16_t numChannels, uint32_t sampleRate, uint16_t bitsPerSample, uint32_t subChunk2Size){

@@ -1,5 +1,5 @@
 run: main.o Console.o Controller.o WavModel.o Wav.o WavReader.o IWavModel.o Echo.o Normalizer.o SignalProcessor.o
-	g++ -std=c++11 -o run main.o Console.o Controller.o WavModel.o Wav.o WavReader.o IWavModel.o Echo.o Normalizer.o SignalProcessor.o
+	g++ -g -std=c++11 -o run main.o Console.o Controller.o WavModel.o Wav.o WavReader.o IWavModel.o Echo.o Normalizer.o SignalProcessor.o
 
 main.o: main.cpp Console.h Controller.h
 	g++ -std=c++11 -c main.cpp
